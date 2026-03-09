@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 
 const TIME_SLOTS = [
@@ -13,9 +13,9 @@ const TIME_SLOTS = [
   "8:00 PM – 10:00 PM",
 ];
 
-type NominatimResult = {
-  place_id: number;
-  display_name: string;
+type AddressSuggestion = {
+  id: number;
+  label: string;
 };
 
 function AddressAutocomplete({
@@ -26,7 +26,7 @@ function AddressAutocomplete({
   inputClass: string;
 }) {
   const [query, setQuery] = useState("");
-  const [suggestions, setSuggestions] = useState<NominatimResult[]>([]);
+  const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);
   const [open, setOpen] = useState(false);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -44,7 +44,7 @@ function AddressAutocomplete({
   const handleChange = (value: string) => {
     setQuery(value);
     if (debounceRef.current) clearTimeout(debounceRef.current);
-    if (value.length < 4) {
+    if (value.length < 2) {
       setSuggestions([]);
       setOpen(false);
       return;
@@ -52,7 +52,7 @@ function AddressAutocomplete({
     debounceRef.current = setTimeout(async () => {
       try {
         const res = await fetch(`/api/address?q=${encodeURIComponent(value)}`);
-        const data: NominatimResult[] = await res.json();
+        const data: AddressSuggestion[] = await res.json();
         setSuggestions(data);
         setOpen(data.length > 0);
       } catch {
@@ -61,8 +61,8 @@ function AddressAutocomplete({
     }, 350);
   };
 
-  const handleSelect = (display: string) => {
-    setQuery(display);
+  const handleSelect = (label: string) => {
+    setQuery(label);
     setSuggestions([]);
     setOpen(false);
   };
@@ -74,7 +74,7 @@ function AddressAutocomplete({
         value={query}
         onChange={(e) => handleChange(e.target.value)}
         onFocus={() => suggestions.length > 0 && setOpen(true)}
-        placeholder="Your address (Ontario, Canada)"
+        placeholder="Your address (GTA, Ontario)"
         required
         autoComplete="off"
         className={inputClass}
@@ -83,11 +83,11 @@ function AddressAutocomplete({
         <ul className="absolute z-50 mt-1 w-full overflow-hidden rounded-lg border border-white/10 bg-[#110e22] shadow-xl">
           {suggestions.map((s) => (
             <li
-              key={s.place_id}
-              onMouseDown={() => handleSelect(s.display_name)}
+              key={s.id}
+              onMouseDown={() => handleSelect(s.label)}
               className="cursor-pointer px-4 py-2.5 text-sm text-white/80 hover:bg-violet-600/20 hover:text-white"
             >
-              {s.display_name}
+              {s.label}
             </li>
           ))}
         </ul>
@@ -101,7 +101,7 @@ export function BookingForm() {
   const [error, setError] = useState("");
   const router = useRouter();
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: { preventDefault(): void; currentTarget: HTMLFormElement }) => {
     event.preventDefault();
     setLoading(true);
     setError("");
