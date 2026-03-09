@@ -101,8 +101,10 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error("Booking API error:", error);
+    const message =
+      error instanceof Error ? error.message : "Failed to process booking request";
     return NextResponse.json(
-      { error: "Failed to process booking request" },
+      { error: `Failed to process booking request: ${message}` },
       { status: 500 }
     );
   }

@@ -106,23 +106,37 @@ export function BookingForm() {
     setLoading(true);
     setError("");
 
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-    const payload = Object.fromEntries(formData.entries());
+    try {
+      const formData = new FormData(event.currentTarget);
+      const payload = Object.fromEntries(formData.entries());
 
-    const response = await fetch("/api/booking", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+      const response = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-    if (!response.ok) {
-      setError("Unable to send request. Please try again.");
+      const raw = await response.text().catch(() => "");
+      let data: { error?: string; message?: string } = {};
+      try {
+        data = raw ? (JSON.parse(raw) as { error?: string; message?: string }) : {};
+      } catch {
+        // non-JSON body, handled below
+      }
+
+      if (!response.ok) {
+        const fallback = raw?.trim() || response.statusText || "Please try again.";
+        setError(data.error ?? data.message ?? `Request failed (${response.status}). ${fallback}`);
+        return;
+      }
+
+      router.push("/thank-you");
+    } catch (err) {
+      console.error("Booking submit failed:", err);
+      setError("Network error. Please check server connection and try again.");
+    } finally {
       setLoading(false);
-      return;
     }
-
-    router.push("/thank-you");
   };
 
   const inputClass =
