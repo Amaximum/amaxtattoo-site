@@ -1,26 +1,265 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #03020a;
+  --foreground: #f0eeff;
+  --accent: #7c3aed;
+  --accent-light: #a78bfa;
+  --accent-mid: #9333ea;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-playfair);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  background: #03020a;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  line-height: 1.65;
+}
+
+/* =====================
+   GRADIENT TEXT
+   ===================== */
+
+.gradient-text {
+  background: linear-gradient(135deg, #a78bfa 0%, #c084fc 50%, #e879f9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* =====================
+   MESH GRADIENT HERO
+   ===================== */
+
+.hero-mesh {
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(124, 58, 237, 0.22) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(168, 85, 247, 0.12) 0%, transparent 45%),
+    radial-gradient(ellipse at 60% 90%, rgba(79, 70, 229, 0.1) 0%, transparent 45%),
+    radial-gradient(ellipse at 10% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
+    #03020a;
+}
+
+/* =====================
+   GLASSMORPHISM
+   ===================== */
+
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-hover {
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.glass-hover:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(167, 139, 250, 0.25);
+}
+
+/* =====================
+   HERO ANIMATIONS
+   ===================== */
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-line-expand {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+@keyframes scroll-pulse {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50%       { opacity: 0.8; transform: translateY(6px); }
+}
+
+.hero-animate {
+  animation: hero-enter 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.hero-animate-1 { animation: hero-enter 1s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.hero-animate-2 { animation: hero-enter 1s 0.30s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.hero-animate-3 { animation: hero-enter 1s 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.hero-animate-4 { animation: hero-enter 1s 0.60s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+.hero-line {
+  transform-origin: left;
+  animation: hero-line-expand 1.6s 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.scroll-pulse {
+  animation: scroll-pulse 2s ease-in-out infinite;
+}
+
+/* =====================
+   SCROLL-DRIVEN ANIMATIONS
+   ===================== */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.scroll-fade-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-fade-in {
+  opacity: 1;
+}
+
+@supports (animation-timeline: view()) {
+  .scroll-fade-up {
+    animation: fade-up 0.8s ease both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 34%;
+  }
+
+  .scroll-fade-in {
+    animation: fade-in 0.9s ease both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 28%;
+  }
+}
+
+/* =====================
+   TYPOGRAPHY
+   ===================== */
+
+.font-display {
+  font-family: var(--font-playfair), Georgia, 'Times New Roman', serif;
+}
+
+/* =====================
+   SCROLLBAR
+   ===================== */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #03020a;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.5);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(167, 139, 250, 0.8);
+}
+
+/* =====================
+   FOCUS
+   ===================== */
+
+:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* =====================
+   SELECTION
+   ===================== */
+
+::selection {
+  background: rgba(124, 58, 237, 0.25);
+  color: #f0eeff;
+}
+
+/* =====================
+   SECTION ALTERNATION
+   ===================== */
+
+.sec-dark {
+  background: #03020a;
+}
+
+.sec-mid {
+  background: linear-gradient(180deg, #08061a 0%, #06041400 100%);
+  background-color: #08061a;
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(124,58,237,0.35) 30%, rgba(167,139,250,0.5) 50%, rgba(124,58,237,0.35) 70%, transparent 100%);
+  position: relative;
+}
+
+.section-divider::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -3px;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(167,139,250,0.7);
+  box-shadow: 0 0 8px rgba(124,58,237,0.8);
+}
+
+/* =====================
+   NATIVE FORM ICONS (dark bg fix)
+   ===================== */
+
+/* Select dropdown arrow → violet */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a78bfa' d='M6 8.5L1.5 3.5h9L6 8.5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+/* Date/time picker icon → violet tinted */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(65%) sepia(60%) saturate(400%) hue-rotate(230deg) brightness(1.1);
+  cursor: pointer;
+  opacity: 0.8;
+}
+input[type="date"]::-webkit-calendar-picker-indicator:hover,
+input[type="time"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
 }
