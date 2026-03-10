@@ -299,7 +299,9 @@ export default function RichmondHillPage() {
             <h2 className="font-display text-xl font-bold text-white mb-5">Aftercare & Maintenance</h2>
             <ul className="space-y-3">
               {[
-                "Gently wash with mild soap — pat dry, never rub",
+                "After getting a tattoo, cover it for the first 2–5 hours",
+                "Gently wash with mild soap and lukewarm water before applying a thin layer of unscented moisturizer — pat dry, never rub",
+                "Clean your tattoo 3–5 times a day during the healing process",
                 "Avoid direct sunlight and swimming pools while healing",
                 "Moisturize with fragrance-free lotion daily",
                 "Follow all aftercare instructions provided after your session",
@@ -379,16 +381,36 @@ export default function RichmondHillPage() {
 
       <div className="section-divider" />
 
-      {/* ── COMMUNITY ── */}
+      {/* ── SENSITIVE SKIN + NEARBY ── */}
       <section className="sec-dark mx-auto w-full max-w-5xl px-4 py-24 sm:px-6 lg:px-8">
         <div className="glass rounded-2xl p-8">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-violet-400 mb-2">Local</p>
-          <h2 className="font-display text-2xl font-bold text-white mb-5">Community Involvement</h2>
-          <p className="leading-relaxed text-white/65">
-            At our Richmond Hill studio, we believe in the power of art to bring people together. Our
-            shop is more than just a place for tattoos and piercings — it is a creative hub where
-            clients, artists, and the community connect. We regularly participate in local events,
-            sponsor art initiatives, and host workshops that celebrate creativity and self-expression.
+          <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-violet-400 mb-2">Safety</p>
+          <h2 className="font-display text-2xl font-bold text-white mb-5">Sensitive Skin and Allergies</h2>
+          <p className="leading-relaxed text-white/65 mb-4">
+            For those with sensitive skin or allergies, getting a tattoo or piercing can feel
+            overwhelming — but at our Richmond Hill piercing studio, your comfort and safety are
+            always our top priorities. Our professional piercing services and tattoo artists are
+            experienced in working with all skin types, ensuring every client enjoys a safe, clean,
+            and unforgettable experience from start to finish.
+          </p>
+          <p className="leading-relaxed text-white/55 mb-4">
+            Before your new tattoo or piercing, we invite you to take advantage of our free
+            consultation service. This is your opportunity to meet with a skilled artist, discuss
+            your ideas, and share any concerns about allergies or sensitivities. Our team listens
+            carefully, offering expert advice and crafting a personalized plan that reflects your
+            vision and style while prioritizing your well-being.
+          </p>
+          <p className="leading-relaxed text-white/55 mb-4">
+            We use only the highest quality, reusable equipment, meticulously cleaned and sterilized
+            after every session. Our studio follows strict safety protocols to minimize any risk of
+            irritation or allergic reaction. Whether you are from Markham, Vaughan, or right here in
+            Richmond Hill, you can trust our dedication to professionalism and client care.
+          </p>
+          <p className="leading-relaxed text-white/55">
+            Our team specializes in creating unique tattoos and piercings that celebrate your
+            individuality. Every piece we create is a reflection of your personal story, crafted with
+            care, attention to detail, and a passion for art. If you have questions about sensitive
+            skin or allergies, don&apos;t hesitate to contact us before booking.
           </p>
         </div>
 
