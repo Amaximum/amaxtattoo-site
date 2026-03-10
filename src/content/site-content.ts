@@ -86,12 +86,12 @@ export const serviceLocations: ServiceLocation[] = [
     intro: "Popular location for custom projects and follow-up sessions.",
   },
   {
-    slug: "oak-ridges",
-    name: "Oak Ridges",
-    distanceKm: 9,
-    lat: 43.9558,
-    lng: -79.4707,
-    intro: "Covered area for private tattoo appointments.",
+    slug: "whitchurch-stouffville",
+    name: "Whitchurch-Stouffville",
+    distanceKm: 18,
+    lat: 43.9714,
+    lng: -79.2483,
+    intro: "Private tattoo studio serving Whitchurch-Stouffville and surrounding areas.",
   },
   {
     slug: "king-city",
