@@ -32,7 +32,7 @@ export default function LocationsPage() {
           <div className="mt-5 h-px w-full bg-gradient-to-r from-violet-500/40 via-purple-500/20 to-transparent" />
         </header>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:[&>*:last-child:nth-child(3n+1)]:col-start-2 lg:[&>*:last-child:nth-child(3n+2)]:col-start-2">
           {serviceLocations.map((location) => (
             <Link
               key={location.slug}
