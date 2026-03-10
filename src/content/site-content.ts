@@ -126,14 +126,6 @@ export const serviceLocations: ServiceLocation[] = [
     intro: "North Markham requests are accepted by availability.",
   },
   {
-    slug: "stouffville",
-    name: "Whitchurch-Stouffville",
-    distanceKm: 16,
-    lat: 43.9706,
-    lng: -79.2456,
-    intro: "Covered area for consultations and tattoo sessions.",
-  },
-  {
     slug: "east-gwillimbury",
     name: "East Gwillimbury",
     distanceKm: 10,
