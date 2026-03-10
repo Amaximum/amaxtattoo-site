@@ -110,11 +110,11 @@ export const serviceLocations: ServiceLocation[] = [
     intro: "Extended mobile coverage for selected tattoo requests.",
   },
   {
-    slug: "maple",
-    name: "Maple",
-    distanceKm: 21,
-    lat: 43.8534,
-    lng: -79.5128,
+    slug: "nobleton",
+    name: "Nobleton",
+    distanceKm: 22,
+    lat: 43.9258,
+    lng: -79.6583,
     intro: "Part of our south-west service radius.",
   },
   {
