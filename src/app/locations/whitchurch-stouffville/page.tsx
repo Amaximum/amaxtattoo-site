@@ -137,20 +137,21 @@ export default function WhitchurchStouffvillePage() {
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-violet-400">Custom Work</p>
             <h2 className="font-display mt-3 text-4xl font-bold text-white sm:text-5xl">
-              Custom Tattoos{" "}
-              <span className="gradient-text italic">Designed with Meaning</span>
+              Tattoo in{" "}
+              <span className="gradient-text italic">Whitchurch-Stouffville</span>
             </h2>
             <p className="mt-6 leading-relaxed text-white/65">
-              Welcome to AMAX Tattoo Studio, a private tattoo studio offering custom tattoos in
-              Whitchurch-Stouffville. Our studio is built around a simple idea — combine creativity,
-              artistic precision, and professional craftsmanship to create tattoos that truly reflect
-              each client&apos;s story and vision.
+              AMAX Tattoo Studio offers professional tattoo services in Whitchurch-Stouffville for
+              clients looking for unique tattoos created with attention to detail and artistic
+              precision. Our artists specialize in custom tattoos, working closely with each client
+              to develop artwork that reflects personal style and vision.
             </p>
             <p className="mt-4 leading-relaxed text-white/50">
-              Every tattoo is carefully designed with attention to detail, placement, and style. We
-              believe every tattoo should feel personal, meaningful, and professionally crafted. If
-              you already have a concept or need help developing a design, we guide you through the
-              process to ensure your tattoo matches your vision perfectly.
+              Our team includes a professional tattoo artist experienced in multiple styles — whether
+              you want a fine line tattoo, black and grey, realism, minimalist, or a custom sleeve
+              tattoo in Whitchurch-Stouffville. Every tattoo is carefully designed and professionally
+              executed. If you already have a concept or need help developing a design, we guide you
+              through the process from consultation to the final session.
             </p>
           </div>
           <div className="glass rounded-2xl p-6 sm:p-8">
