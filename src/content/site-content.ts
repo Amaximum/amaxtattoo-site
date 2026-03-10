@@ -10,7 +10,7 @@ export type ServiceLocation = {
 export const siteConfig = {
   brand: "AMAX Tattoo",
   domain: "https://amaxtattoo.com",
-  phone: "+1 (905) 000-0000",
+  phone: "+1 (289) 812-4560",
   email: "booking@amaxtattoo.com",
   instagram: "https://www.instagram.com/amaxtattoo/",
   facebook: "https://www.facebook.com/profile.php?id=61584157747508",
