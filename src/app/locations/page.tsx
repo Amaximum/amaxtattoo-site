@@ -32,8 +32,11 @@ export default function LocationsPage() {
           <div className="mt-5 h-px w-full bg-gradient-to-r from-violet-500/40 via-purple-500/20 to-transparent" />
         </header>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:[&>*:last-child:nth-child(3n+1)]:col-start-2 lg:[&>*:last-child:nth-child(3n+2)]:col-start-2">
-          {serviceLocations.map((location) => (
+        {(() => {
+          const remainder = serviceLocations.length % 3;
+          const main = remainder === 0 ? serviceLocations : serviceLocations.slice(0, -remainder);
+          const last = remainder === 0 ? [] : serviceLocations.slice(-remainder);
+          const card = (location: typeof serviceLocations[0]) => (
             <Link
               key={location.slug}
               href={`/locations/${location.slug}`}
@@ -55,8 +58,24 @@ export default function LocationsPage() {
                 </svg>
               </p>
             </Link>
-          ))}
-        </div>
+          );
+          return (
+            <>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {main.map(card)}
+              </div>
+              {last.length > 0 && (
+                <div className="mt-4 flex justify-center gap-4">
+                  {last.map((loc) => (
+                    <div key={loc.slug} className="w-full sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)]">
+                      {card(loc)}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </>
+          );
+        })()}
 
         <section className="mt-14 glass rounded-2xl p-8">
           <p className="text-white/40">
