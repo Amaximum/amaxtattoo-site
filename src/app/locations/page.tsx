@@ -32,50 +32,32 @@ export default function LocationsPage() {
           <div className="mt-5 h-px w-full bg-gradient-to-r from-violet-500/40 via-purple-500/20 to-transparent" />
         </header>
 
-        {(() => {
-          const remainder = serviceLocations.length % 3;
-          const main = remainder === 0 ? serviceLocations : serviceLocations.slice(0, -remainder);
-          const last = remainder === 0 ? [] : serviceLocations.slice(-remainder);
-          const card = (location: typeof serviceLocations[0]) => (
-            <Link
-              key={location.slug}
-              href={`/locations/${location.slug}`}
-              className="glass glass-hover group rounded-2xl p-6"
-            >
-              <div className="flex items-start justify-between">
-                <h2 className="text-lg font-semibold text-white/90 transition group-hover:text-violet-300">
-                  {location.name}
-                </h2>
-                <span className="rounded-full bg-violet-500/10 px-2.5 py-0.5 text-xs font-medium text-violet-400">
-                  ~{location.distanceKm} km
-                </span>
-              </div>
-              <p className="mt-3 text-sm leading-relaxed text-white/40">{location.intro}</p>
-              <p className="mt-4 flex items-center gap-1 text-xs font-semibold text-violet-500/60 transition group-hover:text-violet-400">
-                View details
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </p>
-            </Link>
-          );
-          return (
-            <>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {main.map(card)}
-              </div>
-              {last.length > 0 && (
-                <div className="mt-4 flex justify-center gap-4">
-                  {last.map((loc) => (
-                    <div key={loc.slug} className="w-full sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)]">
-                      {card(loc)}
-                    </div>
-                  ))}
+        <div className="flex flex-wrap justify-center gap-4">
+          {serviceLocations.map((location) => (
+            <div key={location.slug} className="w-full sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)]">
+              <Link
+                href={`/locations/${location.slug}`}
+                className="glass glass-hover group flex h-full flex-col rounded-2xl p-6"
+              >
+                <div className="flex items-start justify-between">
+                  <h2 className="text-lg font-semibold text-white/90 transition group-hover:text-violet-300">
+                    {location.name}
+                  </h2>
+                  <span className="rounded-full bg-violet-500/10 px-2.5 py-0.5 text-xs font-medium text-violet-400">
+                    ~{location.distanceKm} km
+                  </span>
                 </div>
-              )}
-            </>
-          );
-        })()}
+                <p className="mt-3 text-sm leading-relaxed text-white/40">{location.intro}</p>
+                <p className="mt-4 flex items-center gap-1 text-xs font-semibold text-violet-500/60 transition group-hover:text-violet-400">
+                  View details
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </p>
+              </Link>
+            </div>
+          ))}
+        </div>
 
         <section className="mt-14 glass rounded-2xl p-8">
           <p className="text-white/40">
