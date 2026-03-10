@@ -44,19 +44,19 @@ export const faqItems = [
       "No. We work by appointment only so each client receives a dedicated planning and tattoo session.",
   },
   {
-    question: "Do you offer mobile tattoo services?",
+    question: "Do your tattoo artists offer mobile tattoo services?",
     answer:
       "Yes, for selected projects and approved environments. Mention this in your booking request.",
   },
   {
     question: "How do I book?",
     answer:
-      "Submit the booking form with your idea, size, placement, and preferred date. We will confirm next steps by email.",
+      "Submit the booking form with your idea, size, placement, and preferred date. Including reference images helps the artist understand your vision. We will confirm next steps by email.",
   },
   {
     question: "Can you help with cover-ups?",
     answer:
-      "Yes, cover-up consultations are available. Please include clear photos in your request.",
+      "Yes, cover-up consultations are available. A thorough consultation with a skilled artist is essential for a successful result. Please include clear photos of your existing tattoo and any ideas you have for the new design.",
   },
 ];
 
