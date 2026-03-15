@@ -132,12 +132,12 @@ export function SiteFooter() {
           </a>
           <span className="text-white/10">·</span>
           <a
-            href="https://npak.ca/deck-builder-toronto/"
+            href="https://npak.ca/"
             target="_blank"
             rel="noreferrer"
             className="transition hover:text-white/35"
           >
-            npak.ca/deck-builder-toronto
+            npak.ca
           </a>
         </div>
       </div>
